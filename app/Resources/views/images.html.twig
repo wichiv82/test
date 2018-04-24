@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Harfony| Images {% endblock %}
+
+{% block body %}
+  {% for i in 0..10 %}
+		<div>
+			<a href="{{ asset('rainbow_squirrel.png') }}" download>
+				<img src = {{ asset('rainbow_squirrel.png') }} width="200", height="230">
+			</a>
+			<p>Titre : *titre de la musique à insérer*</p>
+			<p> *Système d'étoiles à mettre ici* </p>
+			<p> Posté par : *user* le *date* à *heure*</p>
+			<p> *small description* </p>
+			<p> *les commentaires* </p> 
+		</div>
+	{% endfor %}
+
+{% endblock %}

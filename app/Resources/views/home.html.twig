@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Harfony| Page d'accueil {% endblock %}
+
+{% block body %}
+  {% for i in 0..10 %}
+  	<p>{{ 'article ' ~ i }}</p>
+  {% endfor %}
+
+{% endblock %}
