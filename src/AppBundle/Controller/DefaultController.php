@@ -25,14 +25,18 @@ class DefaultController extends Controller{
      * @Route("/images", name="images")
      */
     public function goImages(Request $request){
-        return $this->render('images.html.twig');
+        return $this->render('images.html.twig',
+        array("messages"=> $this->readChat(),
+        "form"=> $this->formulaire($request)->createView()));
     }
     
     /**
      * @Route("/musique", name="musique")
      */
     public function goMusique(Request $request){
-        return $this->render('musique.html.twig');
+        return $this->render('musique.html.twig',
+        array("messages"=> $this->readChat(),
+        "form"=> $this->formulaire($request)->createView()));
     }
 	
 	public function postMessage($user, $contenu){
