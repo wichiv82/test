@@ -2,9 +2,40 @@
 
 {% block title %} Harfony| Page d'accueil {% endblock %}
 
-{% block body %}
-  {% for i in 0..10 %}
-  	<p>{{ 'article ' ~ i }}</p>
-  {% endfor %}
+{% block stylesheets %}
+    {{ parent () }}
+{% endblock %}
 
+{% block body %}
+  {{ form_start ( form_nouveau_post ) }}
+  {{ form_widget ( form_nouveau_post ) }}
+  {{ form_end ( form_nouveau_post ) }}
+
+  <div class="container">
+  <h1 class="my-4">
+    Accueil
+  </h1>
+  
+  <div class="row">
+    {% for i in 0..10 %}
+      <div class="col-lg-4 col-sm-6 portfolio-item">
+        <div class="card h-100">
+          <a href="{{ asset('rainbow_squirrel.png') }}" download><img class="card-img-top" 
+          src={{ asset('rainbow_squirrel.png') }} alt=""></a>
+          <div class="card-body">
+            <h4 class="card-title">
+              <a href="{{ asset('rainbow_squirrel.png') }}" download>Ecureuil époustouflant</a>
+            </h4>
+            <p class="card-text">Cet écureuil est vraiment magnifique !</p>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent () }}
 {% endblock %}

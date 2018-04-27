@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Harfony | Chatroom {% endblock %}
+
+{% block stylesheets %}
+    {{ parent () }}
+{% endblock %}
+
+{% block body %}
+    {% block chat %}
+    <div id="chat">
+	<p>----------------------------------chat-----------------------------------------</p>
+  	    {% for i in messages %}
+	        <p>{{ i.username ~ ": " ~ i.message ~ " " ~ i.time|date('d/m/Y H:i') }}</p>
+	    {% endfor %}
+	
+	{{ form_start ( form ) }}
+	{{ form_widget ( form ) }}
+	{{ form_end ( form ) }}
+
+	<p>-------------------------------------------------------------------------------</p>
+    </div>
+    {% endblock %}
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent () }}
+{% endblock %}

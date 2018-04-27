@@ -34,8 +34,8 @@ security:
       provider: our_db_provider
         
       logout:
-        path: /logout
-        target: /
+        path: logout
+        target: home
 
   access_control:
   # demande ROLE_ADMIN pour le routes qui commencent avec /admin

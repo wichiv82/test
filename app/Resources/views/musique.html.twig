@@ -1,19 +1,46 @@
 {% extends 'base.html.twig' %}
 
-{% block title %} Harfony| Musiques {% endblock %}
+{% block title %} Harfony| Musique {% endblock %}
+
+{% block stylesheets %}
+    {{ parent () }}
+{% endblock %}
 
 {% block body %}
-	{% for i in 0..10 %}
+	<form method="post" enctype="multipart/form-data">
 		<div>
-			<a href="{{ asset('running_in_the_90s.mp3') }}" download>
-				<img src = {{ asset('rainbow_squirrel.png') }} width="120", height="130">
-			</a>
-			<p>Titre : *titre de la musique à insérer*</p>
-			<p> *Système d'étoiles à mettre ici* </p>
-			<p> Posté par : *user* le *date* à *heure*</p>
-			<p> *small description* </p>
-			<p> *les commentaires* </p> 
+		  <label for="upload">Sélectionnez le fichier à poster</label>
+		  <input type="file" id="upload" name="upload" accept=".mp3">
+		  <button type="submit">Envoyer</button>
 		</div>
-	{% endfor %}
+	</form>
+	<div class="container">
+  <h1 class="my-4">
+    Musique
+  </h1>
+  
+  <div class="row">
+    {% for i in liste %}
+      <div class="col-lg-4 col-sm-6 portfolio-item">
+        <div class="card h-100">
+          <a href="{{ asset(i.nom) }}" download><img class="card-img-top" 
+          src={{ asset('initiald.jpg') }} alt=""></a>
+          <div class="card-body">
+            <h4 class="card-title">
+              <a href="{{ asset('/post/'~i.nom) }}">i.nom</a>
+            </h4>
+            <p class="card-text">{{i.description}}</p>
+	    <p class="card-text">PAR {{i.user_id}}</p>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
 
 {% endblock %}
+
+{% block javascripts %}
+    {{ parent () }}
+{% endblock %}
+
+

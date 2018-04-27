@@ -122,6 +122,21 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
             return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::goMusique',  '_route' => 'musique',);
         }
 
+        // chat
+        if ('/chat' === $pathinfo) {
+            return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::goChat',  '_route' => 'chat',);
+        }
+
+        // calendrier
+        if ('/calendrier' === $pathinfo) {
+            return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::goCalendrier',  '_route' => 'calendrier',);
+        }
+
+        // page_post
+        if (0 === strpos($pathinfo, '/post') && preg_match('#^/post/(?P<fichier>[^/]++)$#sD', $pathinfo, $matches)) {
+            return $this->mergeDefaults(array_replace($matches, array('_route' => 'page_post')), array (  '_controller' => 'AppBundle\\Controller\\DefaultController::goPost',));
+        }
+
         // register
         if ('/register' === $pathinfo) {
             return array (  '_controller' => 'AppBundle\\Controller\\RegisterController::registerAction',  '_route' => 'register',);

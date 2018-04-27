@@ -1,6 +1,7 @@
 <?php
   namespace AppBundle\Controller;
 
+  use AppBundle\Entity\User;	
   use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
   use Symfony\Bundle\FrameworkBundle\Controller\Controller;
   use Symfony\Component\HttpFoundation\Request;
@@ -21,14 +22,16 @@
 	    return $this->render('security/login.html.twig', array(
 		    'last_username' => $lastUsername,
 		    'error'=> $error,
+		    'lol'=>'ok'
 	    ));
     }
     
     public function registerAction(UserPasswordEncoderInterface $encoder){
-      $user = new AppBundle\Entity\User();
-      $plainPassword = 'ryanpass';
-      $encoded = $encoder->encodePassword($user, $plainPassword);
-      //utilise l’encoder associé à User dans security.yml
-      $user->setPassword($encoded);
-    }
+		$user = new User();
+		$plainPassword = $user->getPlainPassword();
+		$encoded = $encoder->encodePassword($user, $plainPassword);
+		//utilise l’encoder associé à User dans security.yml
+		$user->setPassword($encoded);
+		
+	}	
   }

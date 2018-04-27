@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Harfony| {{ fichier }} {% endblock %}
+{% block stylesheets %}
+  <link rel="stylesheet" href="{{ asset('bootstrap/css/bootstrap.min.css') }}">
+  <link rel="stylesheet" href="{{ asset('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css') }}">
+{% endblock %}
+{% block style %} 
+	<style>
+		.checked {
+    	color: #ffcc00;
+		}
+	</style>
+{% endblock %}
+
+{% block body %}
+	<div>
+		<a href="{{ asset( fichier ) }}" download>
+			<img src = {{ asset('rainbow_squirrel.png') }} width="200", height="230">
+		</a>
+	</div>
+	
+	<p>Titre : {{ fichier|split('.')[0] }}</p>
+	{% if note < 0%}
+    <p>Ce post n'a pas encore reçu de note</p>
+	{% else %}
+	  {% for i in 1..note %}	
+		  <span class="fa fa-star checked"></span>
+	  {% endfor %}
+	  {% for i in note..4 %}	
+		  <span class="fa fa-star"></span>
+	  {% endfor %}
+  {% endif %}
+	<p> Posté par : *user* le *date* à *heure*</p>
+	<p> *small description* </p>
+	{% for i in commentaires %}
+		<h4> {{i.contenu}} </h4>
+		<p> {{ "par " ~ i.userID ~ " le " ~ i.time|date('d/m/Y H:i') }} </p>
+ 	{% endfor %}
+
+	{{ form_start ( form_commentaire ) }}
+	{{ form_widget ( form_commentaire ) }}
+	{{ form_end ( form_commentaire ) }}
+		
+{% endblock %}

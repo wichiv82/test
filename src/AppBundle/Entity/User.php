@@ -1,6 +1,4 @@
-<?php
-  // src/AppBundle/Entity/User.php
-  
+<?php 
   namespace AppBundle\Entity;
   use Doctrine\ORM\Mapping as ORM;
   use Symfony\Component\Validator\Constraints as Assert;
@@ -9,7 +7,7 @@
 
   /**
   * @ORM\Table(name="app_users")
-  * @ORM\Entity(repositoryClass="AppBundle\Repository\UserRepository")
+  * @ORM\Entity()
   */
   class User implements UserInterface, \Serializable {
     /**
@@ -23,43 +21,58 @@
     
     /**
      * @ORM\Column(type="string", length=30, unique=true)
-     * @Assert\NotBlank()
      */
     private $username;
     
     /**
-     * @Assert\NotBlank()
      * @Assert\Length(max=4096)
      */
     private $password;
     
     /**
+     * @ORM\Column(type="string", length=30)
+     */
+    private $plainPassword;
+    
+    /**
      * @ORM\Column(type="string", length=15)
-     * @Assert\NotBlank()
      */
     private $roles;
-    
-    public function __construct($username, $password, array $roles){
-      $this->username = $username;
-      $this->password = $password;
-      $this->roles = $roles;
-    }
-    
-    
-    public function getUserName(){
+
+    public function getUsername(){
       return $this->username;
     }
     
-    public function getPassWord(){
+    public function getPlainPassword(){
+        return $this->plainPassword;
+    }
+    
+    public function getPassword(){
       return $this->password;
+    }
+    
+    public function getRoles(){
+      return $this->roles;
     }
     
     public function getSalt(){
       return null; // salt pas necessary avec encodage crypt
     }
     
-    public function getRoles(){
-      return $this->roles;
+    public function setPlainPassword($password){
+        $this->plainPassword = $password;
+    }
+    
+    public function setPassword($password){
+        $this->password = $password;
+    }
+    
+    public function setUsername($username){
+        $this->username = $username;
+    }
+    
+    public function setRoles(){
+    	$this->roles ="ROLE_USER";
     }
     
     public function eraseCredentials(){
@@ -69,7 +82,7 @@
       return serialize(array(
         $this->id,
         $this->username,
-        $this->password,
+        $this->plainPassword,
         // see section on salt below
         // $this->salt,
       ));
@@ -79,7 +92,7 @@
       list (
         $this->id,
         $this->username,
-        $this->password,
+        $this->plainPassword,
         // see section on salt below
         // $this->salt
       ) = unserialize($serialized);

@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="chat")
  */
 class ChatMessage{
-	/**
+    /**
       * @var int
       *
       * @ORM\Column(name="id", type="integer")

@@ -11,7 +11,9 @@ class __TwigTemplate_1ebe4c8b378d98ff8ed3014f6c14f282408ff7bbe8d6f7e6795d7c705fc
         $this->parent = $this->loadTemplate("base.html.twig", "musique.html.twig", 1);
         $this->blocks = array(
             'title' => array($this, 'block_title'),
+            'stylesheets' => array($this, 'block_stylesheets'),
             'body' => array($this, 'block_body'),
+            'javascripts' => array($this, 'block_javascripts'),
         );
     }
 
@@ -46,7 +48,7 @@ class __TwigTemplate_1ebe4c8b378d98ff8ed3014f6c14f282408ff7bbe8d6f7e6795d7c705fc
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "title"));
 
-        echo " Harfony| Musiques ";
+        echo " Harfony| Musique ";
         
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->leave($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof);
 
@@ -56,6 +58,28 @@ class __TwigTemplate_1ebe4c8b378d98ff8ed3014f6c14f282408ff7bbe8d6f7e6795d7c705fc
     }
 
     // line 5
+    public function block_stylesheets($context, array $blocks = array())
+    {
+        $__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e = $this->env->getExtension("Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension");
+        $__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e->enter($__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "stylesheets"));
+
+        $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "stylesheets"));
+
+        // line 6
+        echo "    ";
+        $this->displayParentBlock("stylesheets", $context, $blocks);
+        echo "
+";
+        
+        $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->leave($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof);
+
+        
+        $__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e->leave($__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e_prof);
+
+    }
+
+    // line 9
     public function block_body($context, array $blocks = array())
     {
         $__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e = $this->env->getExtension("Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension");
@@ -64,34 +88,83 @@ class __TwigTemplate_1ebe4c8b378d98ff8ed3014f6c14f282408ff7bbe8d6f7e6795d7c705fc
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
 
-        // line 6
-        echo "\t";
-        $context['_parent'] = $context;
-        $context['_seq'] = twig_ensure_traversable(range(0, 10));
-        foreach ($context['_seq'] as $context["_key"] => $context["i"]) {
-            // line 7
-            echo "\t\t<div>
-\t\t\t<a href=\"";
-            // line 8
-            echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("running_in_the_90s.mp3"), "html", null, true);
-            echo "\" download>
-\t\t\t\t<img src = ";
-            // line 9
-            echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("rainbow_squirrel.png"), "html", null, true);
-            echo " width=\"120\", height=\"130\">
-\t\t\t</a>
-\t\t\t<p>Titre : *titre de la musique à insérer*</p>
-\t\t\t<p> *Système d'étoiles à mettre ici* </p>
-\t\t\t<p> Posté par : *user* le *date* à *heure*</p>
-\t\t\t<p> *small description* </p>
-\t\t\t<p> *les commentaires* </p> 
+        // line 10
+        echo "\t<form method=\"post\" enctype=\"multipart/form-data\">
+\t\t<div>
+\t\t  <label for=\"upload\">Sélectionnez le fichier à poster</label>
+\t\t  <input type=\"file\" id=\"upload\" name=\"upload\" accept=\".mp3\">
+\t\t  <button type=\"submit\">Envoyer</button>
 \t\t</div>
-\t";
+\t</form>
+\t<div class=\"container\">
+  <h1 class=\"my-4\">
+    Musique
+  </h1>
+  
+  <div class=\"row\">
+    ";
+        // line 23
+        $context['_parent'] = $context;
+        $context['_seq'] = twig_ensure_traversable(($context["liste"] ?? $this->getContext($context, "liste")));
+        foreach ($context['_seq'] as $context["_key"] => $context["i"]) {
+            // line 24
+            echo "      <div class=\"col-lg-4 col-sm-6 portfolio-item\">
+        <div class=\"card h-100\">
+          <a href=\"";
+            // line 26
+            echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl($this->getAttribute($context["i"], "nom", array())), "html", null, true);
+            echo "\" download><img class=\"card-img-top\" 
+          src=";
+            // line 27
+            echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("initiald.jpg"), "html", null, true);
+            echo " alt=\"\"></a>
+          <div class=\"card-body\">
+            <h4 class=\"card-title\">
+              <a href=\"";
+            // line 30
+            echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl(("/post/" . $this->getAttribute($context["i"], "nom", array()))), "html", null, true);
+            echo "\">i.nom</a>
+            </h4>
+            <p class=\"card-text\">";
+            // line 32
+            echo twig_escape_filter($this->env, $this->getAttribute($context["i"], "description", array()), "html", null, true);
+            echo "</p>
+\t    <p class=\"card-text\">PAR ";
+            // line 33
+            echo twig_escape_filter($this->env, $this->getAttribute($context["i"], "user_id", array()), "html", null, true);
+            echo "</p>
+          </div>
+        </div>
+      </div>
+    ";
         }
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['i'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 18
+        // line 38
+        echo "  </div>
+
+";
+        
+        $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->leave($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof);
+
+        
+        $__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e->leave($__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e_prof);
+
+    }
+
+    // line 42
+    public function block_javascripts($context, array $blocks = array())
+    {
+        $__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e = $this->env->getExtension("Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension");
+        $__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e->enter($__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "javascripts"));
+
+        $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "javascripts"));
+
+        // line 43
+        echo "    ";
+        $this->displayParentBlock("javascripts", $context, $blocks);
         echo "
 ";
         
@@ -114,7 +187,7 @@ class __TwigTemplate_1ebe4c8b378d98ff8ed3014f6c14f282408ff7bbe8d6f7e6795d7c705fc
 
     public function getDebugInfo()
     {
-        return array (  95 => 18,  80 => 9,  76 => 8,  73 => 7,  68 => 6,  59 => 5,  41 => 3,  11 => 1,);
+        return array (  166 => 43,  157 => 42,  145 => 38,  134 => 33,  130 => 32,  125 => 30,  119 => 27,  115 => 26,  111 => 24,  107 => 23,  92 => 10,  83 => 9,  70 => 6,  61 => 5,  43 => 3,  11 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -129,23 +202,50 @@ class __TwigTemplate_1ebe4c8b378d98ff8ed3014f6c14f282408ff7bbe8d6f7e6795d7c705fc
     {
         return new Twig_Source("{% extends 'base.html.twig' %}
 
-{% block title %} Harfony| Musiques {% endblock %}
+{% block title %} Harfony| Musique {% endblock %}
+
+{% block stylesheets %}
+    {{ parent () }}
+{% endblock %}
 
 {% block body %}
-\t{% for i in 0..10 %}
+\t<form method=\"post\" enctype=\"multipart/form-data\">
 \t\t<div>
-\t\t\t<a href=\"{{ asset('running_in_the_90s.mp3') }}\" download>
-\t\t\t\t<img src = {{ asset('rainbow_squirrel.png') }} width=\"120\", height=\"130\">
-\t\t\t</a>
-\t\t\t<p>Titre : *titre de la musique à insérer*</p>
-\t\t\t<p> *Système d'étoiles à mettre ici* </p>
-\t\t\t<p> Posté par : *user* le *date* à *heure*</p>
-\t\t\t<p> *small description* </p>
-\t\t\t<p> *les commentaires* </p> 
+\t\t  <label for=\"upload\">Sélectionnez le fichier à poster</label>
+\t\t  <input type=\"file\" id=\"upload\" name=\"upload\" accept=\".mp3\">
+\t\t  <button type=\"submit\">Envoyer</button>
 \t\t</div>
-\t{% endfor %}
+\t</form>
+\t<div class=\"container\">
+  <h1 class=\"my-4\">
+    Musique
+  </h1>
+  
+  <div class=\"row\">
+    {% for i in liste %}
+      <div class=\"col-lg-4 col-sm-6 portfolio-item\">
+        <div class=\"card h-100\">
+          <a href=\"{{ asset(i.nom) }}\" download><img class=\"card-img-top\" 
+          src={{ asset('initiald.jpg') }} alt=\"\"></a>
+          <div class=\"card-body\">
+            <h4 class=\"card-title\">
+              <a href=\"{{ asset('/post/'~i.nom) }}\">i.nom</a>
+            </h4>
+            <p class=\"card-text\">{{i.description}}</p>
+\t    <p class=\"card-text\">PAR {{i.user_id}}</p>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
 
 {% endblock %}
+
+{% block javascripts %}
+    {{ parent () }}
+{% endblock %}
+
+
 ", "musique.html.twig", "/home/chiv/Documents/PWEB/TP2/mon_projet/app/Resources/views/musique.html.twig");
     }
 }
