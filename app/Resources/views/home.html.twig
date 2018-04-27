@@ -17,16 +17,17 @@
   </h1>
   
   <div class="row">
-    {% for i in 0..10 %}
+    {% for i in liste %}
       <div class="col-lg-4 col-sm-6 portfolio-item">
         <div class="card h-100">
-          <a href="{{ asset('rainbow_squirrel.png') }}" download><img class="card-img-top" 
+          <a href="{{ asset(i.nom) }}" download><img class="card-img-top" 
           src={{ asset('rainbow_squirrel.png') }} alt=""></a>
           <div class="card-body">
             <h4 class="card-title">
-              <a href="{{ asset('rainbow_squirrel.png') }}" download>Ecureuil époustouflant</a>
+              <a href="{{ asset('/post/'~i.nom) }}">{{i.nom}}</a>
             </h4>
-            <p class="card-text">Cet écureuil est vraiment magnifique !</p>
+            <p class="card-text">{{i.description}}</p>
+            <p class="card-text">PAR {{i.user_id}}</p
           </div>
         </div>
       </div>

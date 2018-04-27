@@ -89,13 +89,17 @@ class __TwigTemplate_1ebe4c8b378d98ff8ed3014f6c14f282408ff7bbe8d6f7e6795d7c705fc
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
 
         // line 10
-        echo "\t<form method=\"post\" enctype=\"multipart/form-data\">
-\t\t<div>
-\t\t  <label for=\"upload\">Sélectionnez le fichier à poster</label>
-\t\t  <input type=\"file\" id=\"upload\" name=\"upload\" accept=\".mp3\">
-\t\t  <button type=\"submit\">Envoyer</button>
-\t\t</div>
-\t</form>
+        echo "  ";
+        echo         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock(($context["form_nouveau_post"] ?? $this->getContext($context, "form_nouveau_post")), 'form_start');
+        echo "
+  ";
+        // line 11
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(($context["form_nouveau_post"] ?? $this->getContext($context, "form_nouveau_post")), 'widget');
+        echo "
+  ";
+        // line 12
+        echo         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock(($context["form_nouveau_post"] ?? $this->getContext($context, "form_nouveau_post")), 'form_end');
+        echo "\t
 \t<div class=\"container\">
   <h1 class=\"my-4\">
     Musique
@@ -103,36 +107,36 @@ class __TwigTemplate_1ebe4c8b378d98ff8ed3014f6c14f282408ff7bbe8d6f7e6795d7c705fc
   
   <div class=\"row\">
     ";
-        // line 23
+        // line 19
         $context['_parent'] = $context;
         $context['_seq'] = twig_ensure_traversable(($context["liste"] ?? $this->getContext($context, "liste")));
         foreach ($context['_seq'] as $context["_key"] => $context["i"]) {
-            // line 24
+            // line 20
             echo "      <div class=\"col-lg-4 col-sm-6 portfolio-item\">
         <div class=\"card h-100\">
           <a href=\"";
-            // line 26
+            // line 22
             echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl($this->getAttribute($context["i"], "nom", array())), "html", null, true);
             echo "\" download><img class=\"card-img-top\" 
           src=";
-            // line 27
+            // line 23
             echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("initiald.jpg"), "html", null, true);
             echo " alt=\"\"></a>
           <div class=\"card-body\">
             <h4 class=\"card-title\">
               <a href=\"";
-            // line 30
+            // line 26
             echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl(("/post/" . $this->getAttribute($context["i"], "nom", array()))), "html", null, true);
             echo "\">";
             echo twig_escape_filter($this->env, $this->getAttribute($context["i"], "nom", array()), "html", null, true);
             echo "</a>
             </h4>
             <p class=\"card-text\">";
-            // line 32
+            // line 28
             echo twig_escape_filter($this->env, $this->getAttribute($context["i"], "description", array()), "html", null, true);
             echo "</p>
 \t    <p class=\"card-text\">PAR ";
-            // line 33
+            // line 29
             echo twig_escape_filter($this->env, $this->getAttribute($context["i"], "user_id", array()), "html", null, true);
             echo "</p>
           </div>
@@ -143,7 +147,7 @@ class __TwigTemplate_1ebe4c8b378d98ff8ed3014f6c14f282408ff7bbe8d6f7e6795d7c705fc
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['i'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 38
+        // line 34
         echo "  </div>
 
 ";
@@ -155,7 +159,7 @@ class __TwigTemplate_1ebe4c8b378d98ff8ed3014f6c14f282408ff7bbe8d6f7e6795d7c705fc
 
     }
 
-    // line 42
+    // line 38
     public function block_javascripts($context, array $blocks = array())
     {
         $__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e = $this->env->getExtension("Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension");
@@ -164,7 +168,7 @@ class __TwigTemplate_1ebe4c8b378d98ff8ed3014f6c14f282408ff7bbe8d6f7e6795d7c705fc
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "javascripts"));
 
-        // line 43
+        // line 39
         echo "    ";
         $this->displayParentBlock("javascripts", $context, $blocks);
         echo "
@@ -189,7 +193,7 @@ class __TwigTemplate_1ebe4c8b378d98ff8ed3014f6c14f282408ff7bbe8d6f7e6795d7c705fc
 
     public function getDebugInfo()
     {
-        return array (  168 => 43,  159 => 42,  147 => 38,  136 => 33,  132 => 32,  125 => 30,  119 => 27,  115 => 26,  111 => 24,  107 => 23,  92 => 10,  83 => 9,  70 => 6,  61 => 5,  43 => 3,  11 => 1,);
+        return array (  172 => 39,  163 => 38,  151 => 34,  140 => 29,  136 => 28,  129 => 26,  123 => 23,  119 => 22,  115 => 20,  111 => 19,  101 => 12,  97 => 11,  92 => 10,  83 => 9,  70 => 6,  61 => 5,  43 => 3,  11 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -211,13 +215,9 @@ class __TwigTemplate_1ebe4c8b378d98ff8ed3014f6c14f282408ff7bbe8d6f7e6795d7c705fc
 {% endblock %}
 
 {% block body %}
-\t<form method=\"post\" enctype=\"multipart/form-data\">
-\t\t<div>
-\t\t  <label for=\"upload\">Sélectionnez le fichier à poster</label>
-\t\t  <input type=\"file\" id=\"upload\" name=\"upload\" accept=\".mp3\">
-\t\t  <button type=\"submit\">Envoyer</button>
-\t\t</div>
-\t</form>
+  {{ form_start ( form_nouveau_post ) }}
+  {{ form_widget ( form_nouveau_post ) }}
+  {{ form_end ( form_nouveau_post ) }}\t
 \t<div class=\"container\">
   <h1 class=\"my-4\">
     Musique

@@ -110,14 +110,14 @@ class __TwigTemplate_a9517f7ed5d6fe778e3042220af421921fc5e6b0eea434115a26b7ed646
     ";
         // line 20
         $context['_parent'] = $context;
-        $context['_seq'] = twig_ensure_traversable(range(0, 10));
+        $context['_seq'] = twig_ensure_traversable(($context["liste"] ?? $this->getContext($context, "liste")));
         foreach ($context['_seq'] as $context["_key"] => $context["i"]) {
             // line 21
             echo "      <div class=\"col-lg-4 col-sm-6 portfolio-item\">
         <div class=\"card h-100\">
           <a href=\"";
             // line 23
-            echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("rainbow_squirrel.png"), "html", null, true);
+            echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl($this->getAttribute($context["i"], "nom", array())), "html", null, true);
             echo "\" download><img class=\"card-img-top\" 
           src=";
             // line 24
@@ -127,10 +127,19 @@ class __TwigTemplate_a9517f7ed5d6fe778e3042220af421921fc5e6b0eea434115a26b7ed646
             <h4 class=\"card-title\">
               <a href=\"";
             // line 27
-            echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("rainbow_squirrel.png"), "html", null, true);
-            echo "\" download>Ecureuil époustouflant</a>
+            echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl(("/post/" . $this->getAttribute($context["i"], "nom", array()))), "html", null, true);
+            echo "\">";
+            echo twig_escape_filter($this->env, $this->getAttribute($context["i"], "nom", array()), "html", null, true);
+            echo "</a>
             </h4>
-            <p class=\"card-text\">Cet écureuil est vraiment magnifique !</p>
+            <p class=\"card-text\">";
+            // line 29
+            echo twig_escape_filter($this->env, $this->getAttribute($context["i"], "description", array()), "html", null, true);
+            echo "</p>
+            <p class=\"card-text\">PAR ";
+            // line 30
+            echo twig_escape_filter($this->env, $this->getAttribute($context["i"], "user_id", array()), "html", null, true);
+            echo "</p
           </div>
         </div>
       </div>
@@ -139,7 +148,7 @@ class __TwigTemplate_a9517f7ed5d6fe778e3042220af421921fc5e6b0eea434115a26b7ed646
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['i'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 34
+        // line 35
         echo "  </div>
 </div>
 
@@ -152,7 +161,7 @@ class __TwigTemplate_a9517f7ed5d6fe778e3042220af421921fc5e6b0eea434115a26b7ed646
 
     }
 
-    // line 39
+    // line 40
     public function block_javascripts($context, array $blocks = array())
     {
         $__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e = $this->env->getExtension("Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension");
@@ -161,7 +170,7 @@ class __TwigTemplate_a9517f7ed5d6fe778e3042220af421921fc5e6b0eea434115a26b7ed646
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "javascripts"));
 
-        // line 40
+        // line 41
         echo "    ";
         $this->displayParentBlock("javascripts", $context, $blocks);
         echo "
@@ -186,7 +195,7 @@ class __TwigTemplate_a9517f7ed5d6fe778e3042220af421921fc5e6b0eea434115a26b7ed646
 
     public function getDebugInfo()
     {
-        return array (  165 => 40,  156 => 39,  143 => 34,  130 => 27,  124 => 24,  120 => 23,  116 => 21,  112 => 20,  101 => 12,  97 => 11,  92 => 10,  83 => 9,  70 => 6,  61 => 5,  43 => 3,  11 => 1,);
+        return array (  174 => 41,  165 => 40,  152 => 35,  141 => 30,  137 => 29,  130 => 27,  124 => 24,  120 => 23,  116 => 21,  112 => 20,  101 => 12,  97 => 11,  92 => 10,  83 => 9,  70 => 6,  61 => 5,  43 => 3,  11 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -218,16 +227,17 @@ class __TwigTemplate_a9517f7ed5d6fe778e3042220af421921fc5e6b0eea434115a26b7ed646
   </h1>
   
   <div class=\"row\">
-    {% for i in 0..10 %}
+    {% for i in liste %}
       <div class=\"col-lg-4 col-sm-6 portfolio-item\">
         <div class=\"card h-100\">
-          <a href=\"{{ asset('rainbow_squirrel.png') }}\" download><img class=\"card-img-top\" 
+          <a href=\"{{ asset(i.nom) }}\" download><img class=\"card-img-top\" 
           src={{ asset('rainbow_squirrel.png') }} alt=\"\"></a>
           <div class=\"card-body\">
             <h4 class=\"card-title\">
-              <a href=\"{{ asset('rainbow_squirrel.png') }}\" download>Ecureuil époustouflant</a>
+              <a href=\"{{ asset('/post/'~i.nom) }}\">{{i.nom}}</a>
             </h4>
-            <p class=\"card-text\">Cet écureuil est vraiment magnifique !</p>
+            <p class=\"card-text\">{{i.description}}</p>
+            <p class=\"card-text\">PAR {{i.user_id}}</p
           </div>
         </div>
       </div>

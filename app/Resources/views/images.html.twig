@@ -7,13 +7,9 @@
 {% endblock %}
 
 {% block body %}
-<form method="post" enctype="multipart/form-data">
-	<div>
-		<label for="upload">Sélectionnez le fichier à poster</label>
-		<input type="file" id="upload" name="upload" accept=".jpg, .jpeg, .png">
-		<button type="submit">Envoyer</button>
-	</div>
-</form>
+{{ form_start ( form_nouveau_post ) }}
+{{ form_widget ( form_nouveau_post ) }}
+{{ form_end ( form_nouveau_post ) }}
 
 <div class="container">
   <h1 class="my-4">

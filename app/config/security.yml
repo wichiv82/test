@@ -39,4 +39,4 @@ security:
         target: home
 
   access_control:
-  - { path: ^/(login|register|home), roles: IS_AUTHENTICATED_ANONYMOUSLY }
+  - { path: ^/(login|register), roles: IS_AUTHENTICATED_ANONYMOUSLY }

@@ -23,7 +23,8 @@ class DefaultController extends Controller{
      */
     public function goHome(Request $request){
         return $this->render('home.html.twig',
-        array("form_nouveau_post"=> $this->formulaire_nouveau_post($request)->createView()
+        array("liste"=>$this->getPost("all"),
+        "form_nouveau_post"=> $this->formulaire_nouveau_post($request,"home")->createView()
         ));
     }
     
@@ -32,7 +33,8 @@ class DefaultController extends Controller{
      */
     public function goImages(Request $request){
         return $this->render('images.html.twig',
-        array("liste"=>$this->getPost("Images")
+        array("liste"=>$this->getPost("Images"),
+		"form_nouveau_post"=> $this->formulaire_nouveau_post($request,"images")->createView()
         ));
     }
     
@@ -41,7 +43,8 @@ class DefaultController extends Controller{
      */
     public function goMusique(Request $request){
         return $this->render('musique.html.twig',
-        array("liste"=>$this->getPost("Musique")
+        array("liste"=>$this->getPost("Musique"),
+		"form_nouveau_post"=> $this->formulaire_nouveau_post($request,"musique")->createView()
         ));
     }
     
@@ -100,16 +103,26 @@ class DefaultController extends Controller{
 	
 	public function getPost($categorie){
 		$em = $this->getDoctrine()->getManager();
-		$query = $em->createQuery(
-			"SELECT p.user_id,p.nom,p.categorie,p.description,p.time
-			FROM AppBundle:Post p
-			WHERE p.categorie = :c
-			ORDER BY p.time DESC"
-			)->setParameter("c",$categorie);
-		$query->setFirstResult(0);
-		$query->setMaxResults(29);
+		$query;
+		if ($categorie != "all"){
+			$query = $em->createQuery(
+				"SELECT p.user_id,p.nom,p.categorie,p.description,p.time
+				FROM AppBundle:Post p
+				WHERE p.categorie = :c
+				ORDER BY p.time DESC"
+				)->setParameter("c",$categorie);
+		}else{
+			$query = $em->createQuery(
+				"SELECT p.user_id,p.nom,p.categorie,p.description,p.time
+				FROM AppBundle:Post p
+				ORDER BY p.time DESC"
+				);
+			$query->setFirstResult(0);
+			$query->setMaxResults(6);
+		}
 		return $query->getResult();
 	}
+	
 	
 
 	public function postMessage($user, $contenu){
@@ -213,8 +226,10 @@ class DefaultController extends Controller{
 		$em->flush();
 	}
 	
-	public function formulaire_nouveau_post(Request $request){
+	public function formulaire_nouveau_post(Request $request, $pageCategorie){
 		$p = new Post();
+		$form;
+		if ($pageCategorie == "home"){
 		$form = $this->createFormBuilder($p)
 			->add('user_id', TextType::class)
 			->add('nom', FileType::class)
@@ -225,12 +240,32 @@ class DefaultController extends Controller{
 			->add('description',TextType::class)
 			->add('Poster', SubmitType::class)
 			->getForm();
-		
+		}else{
+			$form = $this->createFormBuilder($p)
+			->add('user_id', TextType::class)
+			->add('nom', FileType::class)
+			->add('description',TextType::class)
+			->add('Poster', SubmitType::class)
+			->getForm();
+		}
+
 		$form->handleRequest($request);
 		if ($form->isSubmitted () && $form->isValid()){
-			$this->postNouveauPost($form['user_id']->getData(), $form['nom']->getData()->getClientOriginalName(),
-			$form['categorie']->getData(),$form['description']->getData());
-			$form['nom']->getData()->move('./../web',$form['nom']->getData()->getClientOriginalName());
+			$extension = explode(".",$form['nom']->getData()->getClientOriginalName())[1];
+			
+			if ($pageCategorie == "home"){
+				$this->postNouveauPost($form['user_id']->getData(), $form['nom']->getData()->getClientOriginalName(),
+				$form['categorie']->getData(),$form['description']->getData());
+				$form['nom']->getData()->move('./../web',$form['nom']->getData()->getClientOriginalName());
+			}else if($pageCategorie == "images" && ($extension == "png" || $extension == "jpg" || $extension == "jpeg")){
+				$this->postNouveauPost($form['user_id']->getData(), $form['nom']->getData()->getClientOriginalName(),
+				"Images",$form['description']->getData());
+				$form['nom']->getData()->move('./../web',$form['nom']->getData()->getClientOriginalName());
+			}else if($pageCategorie == "musique" && $extension == "mp3"){
+				$this->postNouveauPost($form['user_id']->getData(), $form['nom']->getData()->getClientOriginalName(),
+				"Musique",$form['description']->getData());
+				$form['nom']->getData()->move('./../web',$form['nom']->getData()->getClientOriginalName());
+			}
 			header("Refresh:0");
 		}
 		return $form;
