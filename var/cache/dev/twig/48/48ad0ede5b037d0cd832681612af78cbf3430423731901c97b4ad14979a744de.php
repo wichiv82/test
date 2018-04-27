@@ -26,10 +26,7 @@ class __TwigTemplate_91b16204db9a6dee7be83d30b20a11c6798dff38023086b4f13c2eb6ac8
 <html>
     <head>
         <meta charset=\"UTF-8\" />
-        <title>";
-        // line 5
-        echo twig_escape_filter($this->env, ($context["lol"] ?? $this->getContext($context, "lol")), "html", null, true);
-        echo "Formulaire de login</title>
+        <title>Formulaire de login</title>
     </head>
 <body>
 
@@ -83,7 +80,7 @@ class __TwigTemplate_91b16204db9a6dee7be83d30b20a11c6798dff38023086b4f13c2eb6ac8
 
     public function getDebugInfo()
     {
-        return array (  59 => 20,  53 => 15,  47 => 13,  41 => 11,  38 => 10,  31 => 5,  25 => 1,);
+        return array (  56 => 20,  50 => 15,  44 => 13,  38 => 11,  35 => 10,  25 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -100,7 +97,7 @@ class __TwigTemplate_91b16204db9a6dee7be83d30b20a11c6798dff38023086b4f13c2eb6ac8
 <html>
     <head>
         <meta charset=\"UTF-8\" />
-        <title>{{lol}}Formulaire de login</title>
+        <title>Formulaire de login</title>
     </head>
 <body>
 

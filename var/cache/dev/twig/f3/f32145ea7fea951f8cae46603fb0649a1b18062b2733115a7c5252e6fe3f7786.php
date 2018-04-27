@@ -56,10 +56,6 @@ class __TwigTemplate_0ea5b8906c6ca17fd83543ffb740527e4ce79cf8d884c3734e31569541d
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "title"));
 
-        echo " ";
-        echo twig_escape_filter($this->env, ($context["test"] ?? $this->getContext($context, "test")), "html", null, true);
-        echo " ";
-        echo twig_escape_filter($this->env, ($context["lol"] ?? $this->getContext($context, "lol")), "html", null, true);
         echo " Harfony| Inscription ";
         
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->leave($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof);
@@ -94,7 +90,7 @@ class __TwigTemplate_0ea5b8906c6ca17fd83543ffb740527e4ce79cf8d884c3734e31569541d
 
     public function getSourceContext()
     {
-        return new Twig_Source("{% block title %} {{test}} {{lol}} Harfony| Inscription {% endblock %}
+        return new Twig_Source("{% block title %} Harfony| Inscription {% endblock %}
 
 {{ form_start(form) }}
 {{ form_widget(form) }}

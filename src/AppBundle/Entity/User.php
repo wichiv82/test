@@ -26,18 +26,14 @@
     
     /**
      * @Assert\Length(max=4096)
-     */
-    private $password;
-    
-    /**
-     * @ORM\Column(type="string", length=30)
+	 * @Assert\NotBlank()
      */
     private $plainPassword;
     
     /**
-     * @ORM\Column(type="string", length=15)
-     */
-    private $roles;
+    * @ORM\Column(name="password", type="string", length=255)
+    */
+    private $password;
 
     public function getUsername(){
       return $this->username;
@@ -52,7 +48,7 @@
     }
     
     public function getRoles(){
-      return $this->roles;
+      return array("ROLE_USER");
     }
     
     public function getSalt(){
@@ -69,10 +65,6 @@
     
     public function setUsername($username){
         $this->username = $username;
-    }
-    
-    public function setRoles(){
-    	$this->roles ="ROLE_USER";
     }
     
     public function eraseCredentials(){

@@ -1593,14 +1593,6 @@
         <argument>2048</argument>
       </call>
       <call method="addListener">
-        <argument>console.command</argument>
-        <argument type="collection">
-          <argument type="service" id="debug.debug_handlers_listener"/>
-          <argument>configure</argument>
-        </argument>
-        <argument>2048</argument>
-      </call>
-      <call method="addListener">
         <argument>kernel.request</argument>
         <argument type="collection">
           <argument type="service" id="router_listener"/>
@@ -2126,9 +2118,9 @@
     </service>
     <service id="security.access_map" class="Symfony\Component\Security\Http\AccessMap" public="false">
       <call method="add">
-        <argument type="service" id="security.request_matcher.yk6k2aj"/>
+        <argument type="service" id="security.request_matcher.xjpvrra"/>
         <argument type="collection">
-          <argument>ROLE_ADMIN</argument>
+          <argument>IS_AUTHENTICATED_ANONYMOUSLY</argument>
         </argument>
         <argument>null</argument>
       </call>
@@ -2525,8 +2517,8 @@
       <call method="setOptions">
         <argument type="collection">
           <argument key="login_path">login</argument>
+          <argument key="default_target_path">home</argument>
           <argument key="always_use_default_target_path">false</argument>
-          <argument key="default_target_path">/</argument>
           <argument key="target_path_parameter">_target_path</argument>
           <argument key="use_referer">false</argument>
         </argument>
@@ -2617,8 +2609,8 @@
         <argument key="security.firewall.map.context.main" type="service" id="security.firewall.map.context.main"/>
       </argument>
     </service>
-    <service id="security.request_matcher.yk6k2aj" class="Symfony\Component\HttpFoundation\RequestMatcher" public="false">
-      <argument>^/admin</argument>
+    <service id="security.request_matcher.xjpvrra" class="Symfony\Component\HttpFoundation\RequestMatcher" public="false">
+      <argument>^/(login|register|home)</argument>
     </service>
     <service id="security.command.user_password_encoder" class="Symfony\Bundle\SecurityBundle\Command\UserPasswordEncoderCommand" public="false">
       <tag name="console.command" command="security:encode-password"/>

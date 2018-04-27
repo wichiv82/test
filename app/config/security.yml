@@ -30,6 +30,7 @@ security:
       form_login:
         login_path: login
         check_path: login
+        default_target_path: home
       
       provider: our_db_provider
         
@@ -38,5 +39,4 @@ security:
         target: home
 
   access_control:
-  # demande ROLE_ADMIN pour le routes qui commencent avec /admin
-  - { path: ^/admin, roles: ROLE_ADMIN }
+  - { path: ^/(login|register|home), roles: IS_AUTHENTICATED_ANONYMOUSLY }

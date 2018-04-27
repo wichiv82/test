@@ -21,8 +21,7 @@
 	
 	    return $this->render('security/login.html.twig', array(
 		    'last_username' => $lastUsername,
-		    'error'=> $error,
-		    'lol'=>'ok'
+		    'error'=> $error
 	    ));
     }
     
@@ -32,6 +31,6 @@
 		$encoded = $encoder->encodePassword($user, $plainPassword);
 		//utilise l’encoder associé à User dans security.yml
 		$user->setPassword($encoded);
-		
+		return $this->redirectToRoute('home');
 	}	
   }

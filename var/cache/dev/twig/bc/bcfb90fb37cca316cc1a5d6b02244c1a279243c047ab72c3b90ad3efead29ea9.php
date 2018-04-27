@@ -123,7 +123,9 @@ class __TwigTemplate_1ebe4c8b378d98ff8ed3014f6c14f282408ff7bbe8d6f7e6795d7c705fc
               <a href=\"";
             // line 30
             echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl(("/post/" . $this->getAttribute($context["i"], "nom", array()))), "html", null, true);
-            echo "\">i.nom</a>
+            echo "\">";
+            echo twig_escape_filter($this->env, $this->getAttribute($context["i"], "nom", array()), "html", null, true);
+            echo "</a>
             </h4>
             <p class=\"card-text\">";
             // line 32
@@ -187,7 +189,7 @@ class __TwigTemplate_1ebe4c8b378d98ff8ed3014f6c14f282408ff7bbe8d6f7e6795d7c705fc
 
     public function getDebugInfo()
     {
-        return array (  166 => 43,  157 => 42,  145 => 38,  134 => 33,  130 => 32,  125 => 30,  119 => 27,  115 => 26,  111 => 24,  107 => 23,  92 => 10,  83 => 9,  70 => 6,  61 => 5,  43 => 3,  11 => 1,);
+        return array (  168 => 43,  159 => 42,  147 => 38,  136 => 33,  132 => 32,  125 => 30,  119 => 27,  115 => 26,  111 => 24,  107 => 23,  92 => 10,  83 => 9,  70 => 6,  61 => 5,  43 => 3,  11 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -229,7 +231,7 @@ class __TwigTemplate_1ebe4c8b378d98ff8ed3014f6c14f282408ff7bbe8d6f7e6795d7c705fc
           src={{ asset('initiald.jpg') }} alt=\"\"></a>
           <div class=\"card-body\">
             <h4 class=\"card-title\">
-              <a href=\"{{ asset('/post/'~i.nom) }}\">i.nom</a>
+              <a href=\"{{ asset('/post/'~i.nom) }}\">{{i.nom}}</a>
             </h4>
             <p class=\"card-text\">{{i.description}}</p>
 \t    <p class=\"card-text\">PAR {{i.user_id}}</p>

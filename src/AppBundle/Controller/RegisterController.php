@@ -29,10 +29,9 @@ class RegisterController extends Controller{
         
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-        	//try{
+        	try{
 		        $user->setUsername($form['username']->getData());
 				$user->setplainPassword($form['plainPassword']->getData());
-				$user->setRoles();
 				
 				$password = $passwordEncoder->encodePassword($user, $user->getPlainPassword());
             	$user->setPassword($password);
@@ -41,22 +40,18 @@ class RegisterController extends Controller{
 		        $entityManager->persist($user);
 		        $entityManager->flush();     
 		        
-            /*}catch(\Doctrine\DBAL\DBALException $e) {
+            }catch(\Doctrine\DBAL\DBALException $e) {
         		$this->get('session')->getFlashBag()->add('error', 'Username déjà pris');
         		return $this->render(
             		'security/register.html.twig',array(
-           			 'form' => $form->createView(),
-            		'test'=>$user->getPlainPassword(),
-            		'lol'=>$user->getPassword()));
-    		}   */
+           			 'form' => $form->createView()));
+    		}  
     		
     		return $this->redirectToRoute('login');
         }
 
         return $this->render(
             'security/register.html.twig',array(
-            'form' => $form->createView(),
-            'test'=> "ok | ",
-            'lol'=> "go | "));
+            'form' => $form->createView()));
     }
 }

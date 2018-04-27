@@ -27,7 +27,7 @@
           src={{ asset('initiald.jpg') }} alt=""></a>
           <div class="card-body">
             <h4 class="card-title">
-              <a href="{{ asset('/post/'~i.nom) }}">i.nom</a>
+              <a href="{{ asset('/post/'~i.nom) }}">{{i.nom}}</a>
             </h4>
             <p class="card-text">{{i.description}}</p>
 	    <p class="card-text">PAR {{i.user_id}}</p>
